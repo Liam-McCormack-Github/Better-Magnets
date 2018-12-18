@@ -3,7 +3,7 @@ package com.theundertaker11.bettermagnets;
 import com.theundertaker11.bettermagnets.init.ItemRegistry;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -16,8 +16,8 @@ public class BMCreativeTab extends CreativeTabs{
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Item getTabIconItem()
+    public ItemStack getTabIconItem()
     {
-        return ItemRegistry.MAGNET;
+        return new ItemStack(ItemRegistry.MAGNET);
     }
 }

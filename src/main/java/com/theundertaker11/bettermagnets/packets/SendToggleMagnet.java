@@ -25,21 +25,15 @@ public class SendToggleMagnet implements IMessage{
 	    
 	    @Override
 	    public IMessage onMessage(final SendToggleMagnet message, final MessageContext ctx) {
-	        IThreadListener mainThread = (WorldServer) ctx.getServerHandler().playerEntity.getEntityWorld();
+	        IThreadListener mainThread = (WorldServer) ctx.getServerHandler().player.getEntityWorld();
 	        mainThread.addScheduledTask(new Runnable() {
 	            @Override
 	            public void run()
 	            {
-	            	net.minecraft.entity.player.EntityPlayerMP serverPlayer = ctx.getServerHandler().playerEntity;
-	            	
-	            	for(int i=0;i<serverPlayer.inventory.getSizeInventory();i++)
-	            	{
-	            		ItemStack stack = serverPlayer.inventory.getStackInSlot(i);
-	            		if(!ModUtils.isStackEmpty(stack)&&stack.getItem() instanceof ItemMagnet)
-	            		{
-	            			ModUtils.toggleMagnet(stack);
-	            		}
-	            	}
+	            	net.minecraft.entity.player.EntityPlayerMP serverPlayer = ctx.getServerHandler().player;
+	            	ItemStack magnet = ModUtils.findMagnet(serverPlayer);
+	            	if(!magnet.isEmpty())
+	            		ModUtils.toggleMagnetWithMessage(magnet, serverPlayer);
 	            }
 	        });
 	        return null; // no response

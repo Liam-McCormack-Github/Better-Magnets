@@ -5,37 +5,33 @@ import com.theundertaker11.bettermagnets.util.IItemModelProvider;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class BlockRegistry {
 
 	public static Block anti_magnet_block;
-	
-	public static void init()
-	{
+
+	public static void init() {
 		anti_magnet_block = register(new BlockBase("anti_magnet_block"));
 	}
-	
-	private static <T extends Block> T register (T block, ItemBlock itemBlock)
-	{
-		 GameRegistry.register(block);
-		 if(itemBlock != null)
-		 {
-		 GameRegistry.register(itemBlock);
-		 }
-		 
-		 if(block instanceof IItemModelProvider)
-		 {
-		 ((IItemModelProvider)block).registerItemModel(itemBlock);
-		 }
-		 
-		 return block;
+
+	private static <T extends Block> T register(T block, ItemBlock itemBlock) {
+		ForgeRegistries.BLOCKS.register(block);
+		if (itemBlock != null) {
+			// GameRegistry.register(itemBlock);
+			ForgeRegistries.ITEMS.register(itemBlock);
+		}
+
+		if (block instanceof IItemModelProvider) {
+			((IItemModelProvider) block).registerItemModel(itemBlock);
+		}
+
+		return block;
 	}
-		 
-	private static <T extends Block> T register(T block)
-	{
-		 ItemBlock itemBlock = new ItemBlock(block);
-		 itemBlock.setRegistryName(block.getRegistryName());
-		 return register(block, itemBlock);
+
+	private static <T extends Block> T register(T block) {
+		ItemBlock itemBlock = new ItemBlock(block);
+		itemBlock.setRegistryName(block.getRegistryName());
+		return register(block, itemBlock);
 	}
 }

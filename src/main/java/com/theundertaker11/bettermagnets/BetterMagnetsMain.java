@@ -3,6 +3,7 @@ package com.theundertaker11.bettermagnets;
 import com.theundertaker11.bettermagnets.init.BlockRegistry;
 import com.theundertaker11.bettermagnets.init.ConfigMain;
 import com.theundertaker11.bettermagnets.init.ItemRegistry;
+import com.theundertaker11.bettermagnets.init.Recipes;
 import com.theundertaker11.bettermagnets.packets.PacketHandler;
 import com.theundertaker11.bettermagnets.proxy.CommonProxy;
 
@@ -43,6 +44,6 @@ public class BetterMagnetsMain
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-    	
+    	Recipes.init();
     }
 }

@@ -13,7 +13,7 @@ public class Reference {
 	/** String used to tell quickly if an item should be picked up */
 	public static final String NO_PICKUP = "dontpickmeup";
 	
-	public static final String BaublesModID = "Baubles";//TODO change in 1.11
+	public static final String BaublesModID = "baubles";
 	
 	
 	private Reference() {
