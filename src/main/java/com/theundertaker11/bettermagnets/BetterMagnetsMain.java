@@ -35,7 +35,6 @@ public class BetterMagnetsMain
 		
 		ItemRegistry.init();
 		BlockRegistry.init();
-		
 		PacketHandler.init();
 		if(event.getSide()==Side.CLIENT)
 			KeybindHandler.init();

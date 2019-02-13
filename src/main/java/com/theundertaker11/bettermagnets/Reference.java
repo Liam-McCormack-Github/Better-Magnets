@@ -11,7 +11,7 @@ public class Reference {
 	/**NBTTag key used to tell if the magnet is on or not. */
 	public static final String KEY = "active";
 	/** String used to tell quickly if an item should be picked up */
-	public static final String NO_PICKUP = "dontpickmeup";
+	public static final String NO_PICKUP = "PreventRemoteMovement";
 	
 	public static final String BaublesModID = "baubles";
 	

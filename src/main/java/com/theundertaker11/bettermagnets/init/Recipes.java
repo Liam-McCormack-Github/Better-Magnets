@@ -37,10 +37,14 @@ public class Recipes {
 				"xyx", 'x', new ItemStack(ItemRegistry.MAGNET, 1, 3), 'y', "gemEmerald", 'z', Items.NETHER_STAR});
 		
 		//Anti magnet block
-		//T2
 		GameRegistry.addShapedRecipe(BlockRegistry.anti_magnet_block.getRegistryName(), null, new ItemStack(BlockRegistry.anti_magnet_block), new Object[]{
 				"   ",
 				"yzy",
 				"   ", 'z', "cobblestone", 'y', Items.FERMENTED_SPIDER_EYE});
+		//Anti magnet
+				GameRegistry.addShapedRecipe(ItemRegistry.antiMagnet.getRegistryName(), null, new ItemStack(ItemRegistry.antiMagnet), new Object[]{
+						"   ",
+						"yzy",
+						"   ", 'z', new ItemStack(ItemRegistry.MAGNET, 1, 0), 'y', Items.FERMENTED_SPIDER_EYE});
 	}
 }

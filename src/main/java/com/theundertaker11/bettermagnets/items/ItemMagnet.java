@@ -96,7 +96,6 @@ public class ItemMagnet extends Item implements IItemModelProvider, IBauble {
 		if (entity instanceof EntityPlayer && ModUtils.isMagnetActive(stack)) {
 			doMagnet(stack, (EntityPlayer) entity, world);
 		}
-
 	}
 
 	@Optional.Method(modid = "baubles")
@@ -111,22 +110,29 @@ public class ItemMagnet extends Item implements IItemModelProvider, IBauble {
 		if (world.isRemote)
 			return;
 		double range = ConfigMain.getRange(stack);
-
+		if(hasAntiMagnet(player)) {
+			return;
+		}
 		// items
-		Iterator iterator = ModUtils.getEntitiesInRange(EntityItem.class, world, player.posX, player.posY,
-				player.posZ, range).iterator();
+		Iterator iterator = ModUtils.getEntitiesInRange(EntityItem.class, world, player.posX, player.posY, player.posZ, range).iterator();
 		while (iterator.hasNext()) {
 			EntityItem itemToGet = (EntityItem) iterator.next();
-			if (!itemToGet.getTags().contains(Reference.NO_PICKUP) && itemToGet.getEntityData().getBoolean("PreventRemoteMovement")) {
-				if (itemToGet.ticksExisted <= 1)
-					itemToGet.setPickupDelay(1);
+			if (itemToGet.isDead || itemToGet.getTags().contains(Reference.NO_PICKUP) || itemToGet.getEntityData().getBoolean(Reference.NO_PICKUP)) {
+				continue;
+			}
+			if(shouldPickupItem(world, itemToGet.getPosition())){
+				if (itemToGet.ticksExisted <= 1) itemToGet.setPickupDelay(1);
+
 				itemToGet.onCollideWithPlayer(player);
+			}
+			else {
+				itemToGet.getTags().add(Reference.NO_PICKUP);
 			}
 		}
 
 		// xp
-		iterator = ModUtils.getEntitiesInRange(EntityXPOrb.class, world, player.posX, player.posY, player.posZ,
-				range).iterator();
+		iterator = ModUtils.getEntitiesInRange(EntityXPOrb.class, world, player.posX, player.posY, player.posZ, range)
+				.iterator();
 		while (iterator.hasNext()) {
 			EntityXPOrb xpToGet = (EntityXPOrb) iterator.next();
 			player.xpCooldown = 0;
@@ -172,37 +178,13 @@ public class ItemMagnet extends Item implements IItemModelProvider, IBauble {
 		}
 	}
 
-	/*
-	 * For 1.11.2 //Items Iterator iterator =
-	 * ModUtils.getEntitiesInRange(EntityItem.class, world, player.posX,
-	 * player.posY, player.posZ, range).iterator(); while (iterator.hasNext()) {
-	 * EntityItem itemToGet = (EntityItem) iterator.next();
-	 * 
-	 * if(!itemToGet.getTags().contains(Reference.NO_PICKUP)&&shouldPickupItem(
-	 * world, itemToGet.getPosition())) { EntityItemPickupEvent pickupEvent = new
-	 * EntityItemPickupEvent(player, itemToGet);
-	 * MinecraftForge.EVENT_BUS.post(pickupEvent); ItemStack itemStackToGet =
-	 * itemToGet.getEntityItem(); int stackSize = itemStackToGet.stackSize;
-	 * 
-	 * if (pickupEvent.getResult() == Result.ALLOW || stackSize <= 0 ||
-	 * !player.inventory.addItemStackToInventory(itemStackToGet)) {
-	 * player.onItemPickup(itemToGet, stackSize); world.playSound(player,
-	 * player.getPosition(), SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.AMBIENT,
-	 * 0.15F, ((world.rand.nextFloat() - world.rand.nextFloat()) * 0.7F + 1.0F) *
-	 * 2.0F); } }else if(!itemToGet.getTags().contains(Reference.NO_PICKUP))
-	 * itemToGet.addTag(Reference.NO_PICKUP); } //XP Iterator xpiterator =
-	 * ModUtils.getEntitiesInRange(EntityXPOrb.class, world, player.posX,
-	 * player.posY, player.posZ, range).iterator(); while (xpiterator.hasNext()) {
-	 * EntityXPOrb xpToGet = (EntityXPOrb) xpiterator.next();
-	 * 
-	 * if (xpToGet.isDead || xpToGet.isInvisible()) { continue; } player.xpCooldown
-	 * = 0; xpToGet.delayBeforeCanPickup=0;
-	 * xpToGet.setPosition(player.posX,player.posY,player.posZ); PlayerPickupXpEvent
-	 * xpEvent = new PlayerPickupXpEvent(player, xpToGet);
-	 * MinecraftForge.EVENT_BUS.post(xpEvent);
-	 * if(xpEvent.getResult()==Result.ALLOW){ xpToGet.onCollideWithPlayer(player); }
-	 * 
-	 * }
-	 */
+	private static boolean hasAntiMagnet(EntityPlayer player) {
+		for(int i = 0 ; i < player.inventory.getSizeInventory(); i++) {
+			ItemStack stack = player.inventory.getStackInSlot(i);
+			if(stack.getItem() == ItemRegistry.antiMagnet)
+				return true;
+		}
+		return false;
+	}
 
 }

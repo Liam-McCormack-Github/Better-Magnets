@@ -1,5 +1,6 @@
 package com.theundertaker11.bettermagnets.init;
 
+import com.theundertaker11.bettermagnets.items.AntiMagnet;
 import com.theundertaker11.bettermagnets.items.ItemMagnet;
 import com.theundertaker11.bettermagnets.util.IItemModelProvider;
 
@@ -9,9 +10,11 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 public class ItemRegistry {
 
 	public static Item MAGNET;
+	public static Item antiMagnet;
 
 	public static void init() {
 		MAGNET = register(new ItemMagnet("magnet"));
+		antiMagnet = register(new AntiMagnet("antimagnet"));
 	}
 
 	private static <T extends Item> T register(T item) {
