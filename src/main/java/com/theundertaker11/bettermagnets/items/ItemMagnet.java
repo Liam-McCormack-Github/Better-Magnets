@@ -89,7 +89,7 @@ public class ItemMagnet extends Item implements IItemModelProvider, IBauble {
 	public boolean hasEffect(ItemStack stack) {
 		return ModUtils.isMagnetActive(stack);
 	}
-
+	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
 		if (world.isRemote)
 			return;
@@ -110,9 +110,6 @@ public class ItemMagnet extends Item implements IItemModelProvider, IBauble {
 		if (world.isRemote)
 			return;
 		double range = ConfigMain.getRange(stack);
-		if(hasAntiMagnet(player)) {
-			return;
-		}
 		// items
 		Iterator iterator = ModUtils.getEntitiesInRange(EntityItem.class, world, player.posX, player.posY, player.posZ, range).iterator();
 		while (iterator.hasNext()) {
@@ -177,14 +174,4 @@ public class ItemMagnet extends Item implements IItemModelProvider, IBauble {
 			items.add(new ItemStack(ItemRegistry.MAGNET, 1, i));
 		}
 	}
-
-	private static boolean hasAntiMagnet(EntityPlayer player) {
-		for(int i = 0 ; i < player.inventory.getSizeInventory(); i++) {
-			ItemStack stack = player.inventory.getStackInSlot(i);
-			if(stack.getItem() == ItemRegistry.antiMagnet)
-				return true;
-		}
-		return false;
-	}
-
 }

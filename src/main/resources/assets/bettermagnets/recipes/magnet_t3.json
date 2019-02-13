@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "xyx",
+        "yzy",
+        "xyx"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "item": "bettermagnets:magnet",
+            "data": 1
+        },
+        "y":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotGold"
+        },
+        "z":
+        {
+            "item": "minecraft:prismarine_shard",
+            "data": 0
+        }
+    },
+    "result":
+    {
+        "item": "bettermagnets:magnet",
+        "count": 1,
+        "data": 2
+    }
+}

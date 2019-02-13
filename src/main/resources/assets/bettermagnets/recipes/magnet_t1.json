@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "z z",
+        "axa",
+        "aaa"
+    ],
+    "key":
+    {
+        "z":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotIron"
+        },
+        "x":
+        {
+            "item": "minecraft:ender_pearl",
+            "data": 0
+        },
+        "a":
+        {
+            "type": "forge:ore_dict",
+            "ore": "dustRedstone"
+        }
+    },
+    "result":
+    {
+        "item": "bettermagnets:magnet",
+        "count": 1,
+        "data": 0
+    }
+}

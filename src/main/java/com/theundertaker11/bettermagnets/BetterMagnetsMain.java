@@ -3,7 +3,6 @@ package com.theundertaker11.bettermagnets;
 import com.theundertaker11.bettermagnets.init.BlockRegistry;
 import com.theundertaker11.bettermagnets.init.ConfigMain;
 import com.theundertaker11.bettermagnets.init.ItemRegistry;
-import com.theundertaker11.bettermagnets.init.Recipes;
 import com.theundertaker11.bettermagnets.packets.PacketHandler;
 import com.theundertaker11.bettermagnets.proxy.CommonProxy;
 
@@ -16,7 +15,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = Reference.MODID, version = Reference.VERSION)
+@Mod(modid = Reference.MODID, version = Reference.VERSION, name = "Better Magnets")
 public class BetterMagnetsMain
 {
 	public static final CreativeTabs BMtab = new BMCreativeTab(CreativeTabs.getNextID(), "BMTab");
@@ -43,6 +42,6 @@ public class BetterMagnetsMain
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-    	Recipes.init();
+    	//Recipes.init();
     }
 }

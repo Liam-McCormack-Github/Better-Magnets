@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "xyx",
+        "yzy",
+        "xyx"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "item": "bettermagnets:magnet",
+            "data": 2
+        },
+        "y":
+        {
+            "type": "forge:ore_dict",
+            "ore": "gemDiamond"
+        },
+        "z":
+        {
+            "item": "minecraft:nether_wart",
+            "data": 0
+        }
+    },
+    "result":
+    {
+        "item": "bettermagnets:magnet",
+        "count": 1,
+        "data": 3
+    }
+}

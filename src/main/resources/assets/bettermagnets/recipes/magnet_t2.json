@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "xyx",
+        "yzy",
+        "xyx"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "item": "bettermagnets:magnet",
+            "data": 0
+        },
+        "y":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotIron"
+        },
+        "z":
+        {
+            "item": "minecraft:ender_eye",
+            "data": 0
+        }
+    },
+    "result":
+    {
+        "item": "bettermagnets:magnet",
+        "count": 1,
+        "data": 1
+    }
+}

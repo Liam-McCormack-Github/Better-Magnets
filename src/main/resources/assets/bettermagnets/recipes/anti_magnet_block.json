@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "   ",
+        "yzy",
+        "   "
+    ],
+    "key":
+    {
+        "z":
+        {
+            "item": "minecraft:cobblestone",
+            "data": 0
+        },
+        "y":
+        {
+            "item": "minecraft:fermented_spider_eye",
+            "data": 0
+        }
+    },
+    "result":
+    {
+        "item": "bettermagnets:anti_magnet_block",
+        "count": 1,
+        "data": 0
+    }
+}

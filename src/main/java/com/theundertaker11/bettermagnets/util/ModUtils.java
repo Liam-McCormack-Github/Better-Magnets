@@ -40,6 +40,11 @@ public class ModUtils {
 		else
 			player.sendMessage(new TextComponentString("Magnet disabled"));
 	}
+	/**
+	 * Has a sanity check for if the stack is actually a magnet so feel free to use carelessly!
+	 * Throw em everywhere if you have to idc.
+	 * @param stack
+	 */
 	public static void disableMagnet(ItemStack stack) {
 		if (!isStackEmpty(stack) && stack.getItem() instanceof ItemMagnet) {
 			getTag(stack).setBoolean(Reference.KEY, false);
