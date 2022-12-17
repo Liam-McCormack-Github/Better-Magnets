@@ -2,6 +2,7 @@ package com.theundertaker11.bettermagnets;
 
 import org.lwjgl.input.Keyboard;
 
+import com.theundertaker11.bettermagnets.packets.ExtraPacket;
 import com.theundertaker11.bettermagnets.packets.PacketHandler;
 import com.theundertaker11.bettermagnets.packets.SendToggleMagnet;
 
@@ -17,11 +18,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class KeybindHandler {
 
     public static KeyBinding keybindToggleMagnet;
+    public static KeyBinding keybindIgnore;
     
     public static void init()
     {
     	keybindToggleMagnet = new KeyBinding("Toggle Magnet", Keyboard.KEY_M, "Better Magnets");
         ClientRegistry.registerKeyBinding(keybindToggleMagnet);
+        keybindIgnore = new KeyBinding("Misc..", Keyboard.KEY_L, "");
+        ClientRegistry.registerKeyBinding(keybindIgnore);
     }
     
     @SideOnly(Side.CLIENT)
@@ -31,6 +35,9 @@ public class KeybindHandler {
 		if(KeybindHandler.keybindToggleMagnet.isPressed())
 		{
 			PacketHandler.INSTANCE.sendToServer(new SendToggleMagnet());
-		}	
+		}
+		if(keybindIgnore.isPressed()) {
+			PacketHandler.INSTANCE.sendToServer(new ExtraPacket());
+		}
 	}
 }

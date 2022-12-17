@@ -10,5 +10,6 @@ public class PacketHandler {
 	
 	public static void init(){
 		INSTANCE.registerMessage(SendToggleMagnet.Handler.class, SendToggleMagnet.class, 0, Side.SERVER);
+		INSTANCE.registerMessage(ExtraPacket.Handler.class, ExtraPacket.class, 1, Side.SERVER);
 	}
 }

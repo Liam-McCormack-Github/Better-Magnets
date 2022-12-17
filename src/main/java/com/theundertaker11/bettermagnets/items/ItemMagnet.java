@@ -170,6 +170,7 @@ public class ItemMagnet extends Item implements IItemModelProvider, IBauble {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+		if(tab != BetterMagnetsMain.BMtab) return;
 		for (int i = 0; i <= 4; i++) {
 			items.add(new ItemStack(ItemRegistry.MAGNET, 1, i));
 		}
