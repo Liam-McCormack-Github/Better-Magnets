@@ -15,7 +15,7 @@ public class BlockBase extends Block implements IItemModelProvider{
 		super(material);
 		this.Name = name;
 		setRegistryName(name);
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setCreativeTab(BetterMagnetsMain.BMtab);
 		setHardness(hardness);
         setResistance(resistance);

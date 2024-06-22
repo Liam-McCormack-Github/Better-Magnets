@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = Reference.MODID, version = Reference.VERSION)
+@Mod(modid = Reference.MODID, version = Reference.VERSION, name = "Better Magnets")
 public class BetterMagnetsMain
 {
 	public static final CreativeTabs BMtab = new BMCreativeTab(CreativeTabs.getNextID(), "BMTab");
@@ -34,7 +34,6 @@ public class BetterMagnetsMain
 		
 		ItemRegistry.init();
 		BlockRegistry.init();
-		
 		PacketHandler.init();
 		if(event.getSide()==Side.CLIENT)
 			KeybindHandler.init();
@@ -43,6 +42,6 @@ public class BetterMagnetsMain
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-    	
+    	//Recipes.init();
     }
 }

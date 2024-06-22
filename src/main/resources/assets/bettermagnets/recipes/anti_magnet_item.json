@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "   ",
+        "yzy",
+        "   "
+    ],
+    "key":
+    {
+        "z":
+        {
+            "item": "bettermagnets:magnet",
+            "data": 0
+        },
+        "y":
+        {
+            "item": "minecraft:fermented_spider_eye",
+            "data": 0
+        }
+    },
+    "result":
+    {
+        "item": "bettermagnets:antimagnet",
+        "count": 1,
+        "data": 0
+    }
+}
